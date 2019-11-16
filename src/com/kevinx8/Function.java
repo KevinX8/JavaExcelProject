@@ -116,7 +116,9 @@ public class Function {
         }
     }
     public static void Display() {
-        System.out.println(sheets.subList(0,amountofsheets)); //not sure if all elements should be listed including null ones
+        ArrayList<String> sheetsNoNulls = new ArrayList<String>(sheets);
+        sheetsNoNulls.removeAll(Collections.singleton(""));
+        System.out.println(sheetsNoNulls); //not sure if all elements should be listed including null ones
     }
     public static int length() {
         return amountofsheets;
