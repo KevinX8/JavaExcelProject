@@ -63,7 +63,7 @@ public class Main {
                 } else {
                     System.out.println("Error with remove function\n");
                 }
-
+                cmdactive = true;
              } else if (input.startsWith("remove") && fargactive && !sargactive && isNumeric(farg)) {
                 resultS = Function.remove(Integer.parseInt(farg));
                 if (resultS != null) {
@@ -162,7 +162,7 @@ public class Main {
                 }
                 cmdactive = true;
             }
-            if (!cmdactive) {
+            if (!cmdactive && !input.equalsIgnoreCase("")) {
                 System.out.println("Invalid command entered");
             }
             cmdactive = false;
