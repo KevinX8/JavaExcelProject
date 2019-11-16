@@ -1,7 +1,6 @@
 package com.kevinx8;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 
@@ -44,12 +43,12 @@ public class Function {
      if (before && !from.equalsIgnoreCase(to) && sheets.contains(from) && sheets.contains(to)) {
          remove(from); // Dunno if this is necessary as not mentioned in spec but it is implied by the name "move"
          sheets.set((sheets.indexOf(to) - 1), from);
-        return (sheets.indexOf(to) - 1);
+        return (sheets.indexOf(from));
      } else if (!before && !from.equalsIgnoreCase(to) && sheets.contains(from) && sheets.contains(to)) {
             remove(from);
             sheets.set(sheets.indexOf(to)+1, from);
             amountofsheets++;
-            return sheets.indexOf(to)+1;
+            return sheets.indexOf(from);
      } else {
          return -1;
         }

@@ -85,7 +85,7 @@ public class Main {
                 } else if (targ.equalsIgnoreCase("before")) {
                     resultn = Function.move(farg,sarg,true);
                     if (resultn != -1) {
-                        System.out.printf("Sheet Successfully moved before index %d\n",resultn);
+                        System.out.printf("Sheet Successfully moved to index %d\n",resultn);
                     } else {
                         System.out.println("Could not Move");
                     }
@@ -101,7 +101,7 @@ public class Main {
                 } else if (!targactive) {
                     resultn = Function.move(farg,sarg,false);
                     if (resultn != -1) {
-                        System.out.printf("Sheet Successfully moved after index %d\n",resultn);
+                        System.out.printf("Sheet Successfully moved to index %d\n",resultn);
                     } else {
                         System.out.println("Could not Move");
                     }
