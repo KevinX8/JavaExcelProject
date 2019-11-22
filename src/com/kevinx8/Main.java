@@ -12,11 +12,9 @@ public class Main {
         return true;
     }
     public static void main(String[] args) {
-        Function.sheets.set(0, "Sheet1"); //initialise with some sheets
-        Function.sheets.set(1, "Sheet2");
-        Function.sheets.set(2, "Sheet3");
-        Function.lastadded = 3;
-        Function.amountofsheets = 3;
+        Function.add();
+        Function.add();
+        Function.add();
         int resultn;
         boolean fargactive = false,sargactive =false,targactive =false,cmdactive = false,resultb;
         Scanner inme = new Scanner(System.in);
@@ -46,18 +44,18 @@ public class Main {
         if (input.startsWith("add") && !fargactive) {
             resultb = Function.add();
             if (resultb) {
-                System.out.printf("Added %s succesfully\n", Function.sheets.get(Function.lastadded - 1));
+                System.out.printf("Added %s succesfully\n", "Sheet" + Function.lastadded);
             } else {
                 System.out.println("Failed to add new sheet\n");
             }
             cmdactive = true;
         }
             if (input.contentEquals("display") && !fargactive) {
-            Function.Display();
+            com.kevinx8.Function.Display();
             cmdactive = true;
         }
             if (input.startsWith("remove") && fargactive && !sargactive && !isNumeric(farg)) {
-                resultn = Function.remove(farg);
+                resultn = com.kevinx8.Function.remove(farg);
                 if (resultn != -1) {
                     System.out.printf("removed sheet at index %d succesfully\n",resultn);
                 } else {
@@ -65,7 +63,7 @@ public class Main {
                 }
                 cmdactive = true;
              } else if (input.startsWith("remove") && fargactive && !sargactive && isNumeric(farg)) {
-                resultS = Function.remove(Integer.parseInt(farg));
+                resultS = com.kevinx8.Function.remove(Integer.parseInt(farg));
                 if (resultS != null) {
                     System.out.printf("removed sheet %s successfully\n",resultS);
                 } else {
@@ -75,7 +73,7 @@ public class Main {
             }
             if (input.startsWith("move") && fargactive && sargactive) {
                 if (isNumeric(farg) && isNumeric(sarg) && targ.equalsIgnoreCase("before")) {
-                    resultS = Function.move(Integer.parseInt(farg),Integer.parseInt(sarg),true);
+                    resultS = com.kevinx8.Function.move(Integer.parseInt(farg),Integer.parseInt(sarg),true);
                     if (resultS != null) {
                         System.out.printf("Sheet Successfully moved before %s\n", resultS);
                     } else {
@@ -83,7 +81,7 @@ public class Main {
                     }
                     cmdactive = true;
                 } else if (targ.equalsIgnoreCase("before")) {
-                    resultn = Function.move(farg,sarg,true);
+                    resultn = com.kevinx8.Function.move(farg,sarg,true);
                     if (resultn != -1) {
                         System.out.printf("Sheet Successfully moved to index %d\n",resultn);
                     } else {
@@ -91,7 +89,7 @@ public class Main {
                     }
                     cmdactive = true;
                 } else if (isNumeric(farg) && isNumeric(sarg) && !targactive) {
-                    resultS = Function.move(Integer.parseInt(farg),Integer.parseInt(sarg),false);
+                    resultS = com.kevinx8.Function.move(Integer.parseInt(farg),Integer.parseInt(sarg),false);
                     if (resultS != null) {
                         System.out.printf("Sheet Successfully moved after %s\n",resultS);
                     } else {
@@ -99,7 +97,7 @@ public class Main {
                     }
                     cmdactive = true;
                 } else if (!targactive) {
-                    resultn = Function.move(farg,sarg,false);
+                    resultn = com.kevinx8.Function.move(farg,sarg,false);
                     if (resultn != -1) {
                         System.out.printf("Sheet Successfully moved to index %d\n",resultn);
                     } else {
@@ -110,14 +108,14 @@ public class Main {
             }
             if (input.startsWith("moveToEnd") && fargactive && !sargactive) {
                 if (isNumeric(farg)) {
-                    resultS = Function.moveToEnd(Integer.parseInt(farg));
+                    resultS = com.kevinx8.Function.moveToEnd(Integer.parseInt(farg));
                     if (resultS != null) {
                         System.out.printf("%s moved to end successfully\n", resultS);
                     } else {
                         System.out.println("MoveToEnd error has occured");
                     }
                 } else {
-                    resultn = Function.moveToEnd(farg);
+                    resultn = com.kevinx8.Function.moveToEnd(farg);
                     if (resultn != -1) {
                         System.out.printf("Sheet at index %d moved to end Successfully\n",resultn);
                     } else {
@@ -127,7 +125,7 @@ public class Main {
                 cmdactive = true;
             }
             if (input.startsWith("rename") && fargactive && !targactive) {
-                resultn = Function.rename(farg,sarg);
+                resultn = com.kevinx8.Function.rename(farg,sarg);
                 if (resultn != -1) {
                     System.out.printf("Renamed file at index %d Successfully\n",resultn);
                     } else {
@@ -136,7 +134,7 @@ public class Main {
                 cmdactive = true;
             }
             if (input.startsWith("sheetname") && fargactive && !sargactive) {
-                resultS = Function.sheetName(Integer.parseInt(farg));
+                resultS = com.kevinx8.Function.sheetName(Integer.parseInt(farg));
                 if (resultS != null) {
                     System.out.printf("Sheet name at this index is %s\n",resultS);
                 } else {
@@ -145,18 +143,18 @@ public class Main {
                 cmdactive = true;
             }
             if (input.startsWith("length") && !fargactive) {
-                System.out.printf("SheetPad is %d long\n",Function.length());
+                System.out.printf("SheetPad is %d long\n", com.kevinx8.Function.length());
                 cmdactive = true;
             }
             if (input.startsWith("index") && !fargactive) {
-                System.out.println("index is " + Function.index(farg));
+                System.out.println("index is " + com.kevinx8.Function.index(farg));
                 cmdactive = true;
             }
             if (input.startsWith("help")) {
                 if (fargactive && !sargactive) {
-                    Function.Help(farg);
+                    com.kevinx8.Function.Help(farg);
                 } else if (!fargactive) {
-                    Function.Help("all");
+                    com.kevinx8.Function.Help("all");
                 } else {
                     System.out.println("too many arguments");
                 }
