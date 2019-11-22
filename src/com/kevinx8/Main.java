@@ -12,9 +12,6 @@ public class Main {
         return true;
     }
     public static void main(String[] args) {
-        Function.add();
-        Function.add();
-        Function.add();
         int resultn;
         boolean fargactive = false,sargactive =false,targactive =false,cmdactive = false,resultb;
         Scanner inme = new Scanner(System.in);
